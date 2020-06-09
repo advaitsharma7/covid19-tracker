@@ -1,0 +1,319 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+select {
+  background-color: #282c34;
+  color: antiquewhite;
+  border-radius: 2.7%;
+  padding: 5%;
+  /* padding: inherit; */
+  /* margin: inherit; */
+  /* padding: inherit; */
+  /* height: inherit; */
+}
+
+option {
+  background-color: #282c34;
+  color: aliceblue;
+  /* height: inherit; */
+}
+
+button {
+  margin-left: 1.5%;
+  padding: 0.5%;
+  /* height: inherit; */
+  /* width: initial; */
+}
+
+/* hover boxes */
+
+* {
+  box-sizing: border-box;
+}
+
+/* Developed by Frank Tielemans */
+
+/* CSS playground here, via these variables you can adjust the accentcolor, the position and dimensions of the bubble and textsize en color of the buttontext */
+
+:root {
+  /* Color of the background */
+  --bodycolor: #efefef;
+
+  /* Width of the columsn */
+  --boxwidth: 340px;
+  /* Height of the rows */
+  --boxheight: 520px;
+
+  /* Width of the bubble (it's always a circle, width and height are the same) */
+  --icon-box-dimensions: 250px;
+
+  /* DON'T TOUCH THE VALUES OF THIS VARIABLE! */
+  --icon-box-dimensions-half: calc(var(--icon-box-dimensions) / 2);
+  /*--------------------*/
+
+  /* How far from the top is the position of the bubble? */
+  --icon-offset: -10%;
+
+  /* Size of the font */
+  --content-fontsize: 1.1em;
+
+  /* Define a accent color, make sure it's readable */
+  --accentcolor: maroon;
+
+  /* backgroundcolor and text color of the button, unhovered.
+Color in hovered state is the accent color */
+  --btntext-background: rgba(255, 255, 255, 0.1);
+  --btntext-color: #eee;
+}
+
+.body {
+  font-family: "Lato", sans-serif;
+  padding: 0px;
+  /* background: var(--bodycolor); */
+  background-color: inherit;
+  height: 70%;
+  margin: auto;
+  width: fit-content;
+}
+
+/* grid-container */
+.container {
+  margin: 0 auto;
+  padding: 2%;
+  max-width: 100%;
+  height: 400px;
+  /* height: auto; */
+  /* max-height: 30 */
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--boxwidth), 1fr));
+  grid-auto-rows: minmax(var(--boxheight), 1fr);
+  /* grid-template-rows: repeat(auto-fit, minmax(170%, 1fr)); */
+  grid-gap: 30px;
+  justify-content: center;
+  box-sizing: border-box;
+  /* box-sizing: content-box; */
+}
+
+/* this is the card selecter */
+.box {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  box-sizing: border-box;
+  background: #efefef;
+  transition: 0.5s;
+  width: 100%;
+  height: 70%;
+  /* height: max-content; */
+  border-radius: 10%;
+}
+
+.box:hover {
+  cursor: pointer;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px);
+}
+
+.img-box {
+  position: absolute;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 95%;
+  transition: 0.35s cubic-bezier(0.15, 0.78, 0.46, 0.8);
+  z-index: 1;
+}
+
+.img-box img {
+  object-fit: cover;
+  /* width: 60%; */
+  /* height: 60%; */
+  margin-top: 12%;
+  margin-bottom: 12%;
+  transition: all 0.5s ease-in-out;
+}
+
+.img-box::after {
+  /*   extract the title of the article */
+  content: attr(title);
+
+  font-family: "Lato";
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 111%;
+  z-index: 100;
+  text-align: center;
+  font-size: 1.05em;
+  font-weight: 700;
+  width: 250%;
+  opacity: 1;
+  border-radius: 50%;
+  height: 45.5%;
+  padding-top: 27px;
+  /*     background: #fff radial-gradient(circle, rgba(0,0,0,0) , rgba(0,0,0,1) 300%); */
+  background: #efefef;
+  transition: 0.2s;
+  color: #666;
+  letter-spacing: -0.6px;
+  box-shadow: inset 0px 0 3px 3px rgba(0, 0, 0, 0.3);
+}
+
+.img-box::before {
+  position: absolute;
+  content: attr(data-author);
+  bottom: 2.5%;
+  font-weight: 400;
+  color: white;
+  z-index: 2001;
+  text-align: center;
+  width: 100%;
+  color: var(--accentcolor);
+  font-variant: small-caps;
+  text-transform: lowercase;
+  font-size: 0.8em;
+  opacity: 1;
+}
+
+.container .box:hover .img-box {
+  top: var(--icon-offset);
+  left: calc(50% - var(--icon-box-dimensions-half));
+  width: var(--icon-box-dimensions);
+  height: var(--icon-box-dimensions);
+  /* padding-top: 15%;
+  padding-bottom: 0px;
+  padding-left: 15%;
+  padding-right: 15%; */
+}
+.container .box:hover .img-box:after,
+.container .box:hover .img-box:before {
+  opacity: 0;
+}
+
+.container .box:hover .img-box img {
+  border: 2px solid white;
+  border-radius: 50%;
+  filter: saturate(70%) contrast(120%);
+  margin-top: 17%;
+  /* margin-bottom: 50%; */
+}
+
+.box:hover .content {
+  bottom: 0;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.content {
+  position: absolute;
+  opacity: 1;
+  bottom: -50%;
+  /* width: 100%;
+  height: 60%; */
+  /* padding: 3em; */
+  padding: inherit;
+  font-size: 0.8em;
+  text-align: center;
+  line-height: 1.4;
+  transition: bottom 0.35s cubic-bezier(0.15, 0.78, 0.46, 0.8), transform 0.3s;
+  color: #000;
+  opacity: 0;
+  padding-top: 20%;
+}
+
+.country {
+  margin-left: 3em;
+  margin-bottom: 3em;
+}
+
+.content h2 {
+  position: relative;
+  font-size: 1.4em;
+  font-weight: 700;
+}
+
+.content h3 {
+  font-size: 1em;
+  text-transform: lowercase;
+  font-variant: small-caps;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+  color: var(--accentcolor);
+  margin-bottom: 0.5em;
+}
+
+.content p {
+  font-size: var(--content-fontsize);
+  font-weight: 100;
+  margin-bottom: 0.5em;
+}
+
+button.ghost-btn {
+  position: absolute;
+  z-index: 10;
+  margin-top: 1em;
+  text-align: center;
+  border: 0;
+  border-radius: 24px;
+  padding: 8px 38px;
+  background: var(--btntext-background);
+  color: var(--accentcolor);
+  border: 1px solid var(--accentcolor);
+  font-weight: 100;
+  transition: 1s;
+  font-size: 0.8em;
+  bottom: 5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+button.ghost-btn:hover {
+  cursor: pointer;
+  background: var(--accentcolor);
+  color: var(--btntext-color);
+}
+
+@media screen and (min-width: 600px) {
+  :root {
+    --boxheight: 520px;
+  }
+}

@@ -1,0 +1,11 @@
+.ChartWithZoom {
+  width: 50%;
+  margin: auto;
+  border-radius: 5%;
+}
+
+.Graph {
+  text-align: center;
+  align-self: center;
+  padding-bottom: 27px;
+}
