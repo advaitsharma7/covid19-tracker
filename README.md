@@ -18,6 +18,10 @@ Install all the required packages/dependencies using npm
 
 ### `npm install`
 
+then
+
+### `npm install axios`
+
 Serve the app to browser
 
 ### `npm start`
