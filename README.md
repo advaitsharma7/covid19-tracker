@@ -1,5 +1,5 @@
 # covid19-tracker
-This is an application built with ReactJS and CSS. It helps track outbreak and transmission COVID19 in India. The primary data source is collected by volunteers at APIs. The data is displayed in Confirmed, Death and Recovered components and the data is graphically shown in the Chart which is zoomable/pannable.
+This is an application built with ReactJS and CSS. It helps track outbreak and transmission COVID19. The primary data source is collected by volunteers at APIs. The data is displayed in Confirmed, Death and Recovered components and the data is graphically shown in the Chart which is zoomable/pannable.
 
 The instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
